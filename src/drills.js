@@ -7,16 +7,33 @@ const knexInstance = knex({
 });
 
 
-function searchName(searchTerm) {
+// function searchName(searchTerm) {
+//     knexInstance
+//         .select('*')
+//         .from('shopping_list')
+//         .where('name', 'ILIKE', `%${searchTerm}%`)
+//         .then(result => {
+//             console.log({ searchTerm })
+//             console.log(result)
+//         })
+// };
+
+// searchName('urger');
+
+
+
+function getAllItemsPaginated(pageNumber) {
+    const itemLimit = 6
+    const offset = itemLimit * (pageNumber - 1);
     knexInstance
         .select('*')
         .from('shopping_list')
-        .where('name', 'ILIKE', `%${searchTerm}%`)
+        .limit(itemLimit)
+        .offset(offset)
         .then(result => {
-            console.log({ searchTerm })
+            console.log('PAGINATE ITEMS', { pageNumber })
             console.log(result)
         })
-}
+};
 
-searchName('urger')
-
+getAllItemsPaginated(2);
