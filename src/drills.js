@@ -7,18 +7,18 @@ const knexInstance = knex({
 });
 
 
-// function searchName(searchTerm) {
-//     knexInstance
-//         .select('*')
-//         .from('shopping_list')
-//         .where('name', 'ILIKE', `%${searchTerm}%`)
-//         .then(result => {
-//             console.log({ searchTerm })
-//             console.log(result)
-//         })
-// };
+function searchName(searchTerm) {
+    knexInstance
+        .select('*')
+        .from('shopping_list')
+        .where('name', 'ILIKE', `%${searchTerm}%`)
+        .then(result => {
+            console.log({ searchTerm })
+            console.log(result)
+        })
+};
 
-// searchName('urger');
+searchName('urger');
 
 
 
@@ -37,3 +37,27 @@ function getAllItemsPaginated(pageNumber) {
 };
 
 getAllItemsPaginated(2);
+
+
+
+// function addedProducts(daysAgo) {
+//     knexInstance
+//         .select('*')
+//         .from('shopping_list')
+//         .where('date_added' '>' )
+// }
+
+
+
+function costPerCategory() {
+    knexInstance
+        .select('category')
+        .count('price as total')
+        .from('shopping_list')
+        .groupBy('category')
+        .then(result => {
+            console.log(result)
+        })
+}
+
+costPerCategory()
