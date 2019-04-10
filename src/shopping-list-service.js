@@ -25,4 +25,7 @@ const shoppingListService = {
     },
 }
 
+// module.exports(shoppingListService); //this was the wrong way to do it
+
+
 module.exports = shoppingListService;
